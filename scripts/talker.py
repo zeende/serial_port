@@ -8,7 +8,7 @@ serialPort = "/dev/ttyUSB0"
 baudRate = 9600  
 ser = serial.Serial(serialPort, baudRate, timeout=1)
 print("port=%s ,b=%d" % (serialPort, baudRate))
-
+time.sleep(1.5)
 
 def talker():
     pub = rospy.Publisher('chatter', header, queue_size=10)
