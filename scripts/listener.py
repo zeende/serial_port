@@ -16,7 +16,7 @@ def callback(data):
 def listener():
  
     rospy.init_node('listener', anonymous=True)
- 
+
     rospy.Subscriber('chatter', header, callback)
     rospy.spin()
  

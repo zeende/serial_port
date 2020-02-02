@@ -8,7 +8,7 @@ serialPort = "/dev/ttyUSB0"
 baudRate = 9600  
 ser = serial.Serial(serialPort, baudRate, timeout=1)
 print("port=%s ,b=%d" % (serialPort, baudRate))
-time.sleep(1.5)
+time.sleep(1)
 
 def talker():
     pub = rospy.Publisher('chatter', header, queue_size=10)
@@ -18,7 +18,7 @@ def talker():
         get_str = ser.readline()
         get_str = get_str.strip()
         get_str = get_str.decode('utf-8','ignore') 
-        #print(get_str)
+        print(get_str)
         list_str = get_str.split(',')
         msg = header()
         data1 = int(list_str[0])
@@ -28,6 +28,11 @@ def talker():
         msg.num2 = data2
         msg.num3 = data3
         pub.publish(msg)
+        print(msg.con)
+        if msg.con:
+            ser.write("1\n") 
+        else:
+            ser.write("0\n") 
         rate.sleep()
 
 if __name__ == '__main__':
