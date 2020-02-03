@@ -17,7 +17,7 @@ def listener():
  
     rospy.init_node('listener', anonymous=True)
 
-    rospy.Subscriber('chatter', header, callback)
+    rospy.Subscriber('chatter', header, callback,queue_size=1)
     rospy.spin()
  
 if __name__ == '__main__':
