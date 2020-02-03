@@ -1,5 +1,12 @@
 # serial_port  
 使用python编写arduino与ros之间串口通信（未使用rosserial库）  
+  
+2020.02.03
+-----------------  
+*更新为键盘控制，使用阿克曼运动模型*
+keyboard.py 用于读取键盘，并发布运动信息
+port_SubAndPub.py 用于订阅运动信息，通过串口发送到arduino，同时增加了读取串口数据的线程
+listener.py 此节点作用为订阅串口数据，打印在屏幕
  
 2020.02.02  
 -----------------  
@@ -18,3 +25,4 @@ rosrun serial_port talker.py  #此节点用于解析arduino从串口发来的数
 rosrun serial_port listener.py #此节点订阅消息内容，并输出。  
   
    
+  
